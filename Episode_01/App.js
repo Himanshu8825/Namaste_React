@@ -7,6 +7,7 @@ const heading = React.createElement(
   'Hellow World from React!'
 );
 
+
 const parent = React.createElement('div', { id: 'parent' }, [
   React.createElement('div', { id: 'child' }, [
     React.createElement(
@@ -33,6 +34,7 @@ const parent = React.createElement('div', { id: 'parent' }, [
     ),
   ]),
 ]);
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
