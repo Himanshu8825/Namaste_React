@@ -1,7 +1,6 @@
 import React from 'react';
 
 const FoodCard = ({ food }) => {
-  console.log(food);
 
   return (
     <div className="w-[250px] border rounded-md shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 font-sans hover:cursor-pointer">

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FoodCard from './FoodCard';
 
 const Body = () => {
-  const foodData = [
+  let foodData = [
     {
       id: 1,
       name: 'Thikana',
@@ -83,12 +83,28 @@ const Body = () => {
     },
   ];
 
+  const [filteredData, setFilteredData] = useState(foodData);
+
+  const filterDish = () => {
+    const filterData = foodData.filter((dish) => dish.rating > 4.2);
+    setFilteredData(filterData);
+  };
+
   return (
-    <div className="w-full px-6 grid grid-cols-5 gap-4 mb-6 ">
-      {foodData.map((food) => (
-        <FoodCard key={food.id} food={food} />
-      ))}
-    </div>
+    <>
+      <button
+        className="m-6 py-2  px-6 bg-blue-500 rounded-xl cursor-pointer font-medium text-white"
+        onClick={filterDish}
+        onDoubleClick={() => setFilteredData(foodData)}
+      >
+        Top Rated
+      </button>
+      <div className="w-full px-6 grid grid-cols-5 gap-4 mb-6 ">
+        {filteredData.map((food) => (
+          <FoodCard key={food.id} food={food} />
+        ))}
+      </div>
+    </>
   );
 };
 
