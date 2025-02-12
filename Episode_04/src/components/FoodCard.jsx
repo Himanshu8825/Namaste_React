@@ -33,7 +33,7 @@ const FoodCard = ({ food }) => {
                   {cuisine}
                 </span>
               ))}
-              <span className="bg-gray-300 text-gray-600 text-xs px-2 py-1 rounded-full">...</span>
+             
             </>
           ) : (
             food?.cuisines.map((cuisine, index) => (

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import FoodCard from './FoodCard';
+import Search from './Search';
+import Shimmer from './Simmer';
 
 const Body = () => {
   const [filteredData, setFilteredData] = useState([]);
@@ -34,18 +36,28 @@ const Body = () => {
 
   return (
     <>
-      <button
-        className="m-6 py-2  px-6 bg-blue-500 rounded-xl cursor-pointer font-medium text-white"
-        onClick={filterDish}
-        onDoubleClick={() => setFilteredData(allData)}
-      >
-        Top Rated
-      </button>
-      <div className="w-full px-6 grid grid-cols-5 gap-4 mb-6 ">
-        {filteredData.map((food) => (
-          <FoodCard key={food.info.id} food={food.info} />
-        ))}
+      <div className="w-full flex justify-between items-center">
+        <button
+          className="m-6 py-2  px-6 bg-blue-500 rounded-xl cursor-pointer font-medium text-white"
+          onClick={filterDish}
+          onDoubleClick={() => setFilteredData(allData)}
+        >
+          Top Rated
+        </button>
+
+        <div className="">
+          <Search allData={allData} setFilteredData={setFilteredData} />
+        </div>
       </div>
+      {filteredData.length === 0 ? (
+        <Shimmer  />
+      ) : (
+        <div className="w-full px-6 grid grid-cols-5 gap-4 mb-6 ">
+          {filteredData.map((food) => (
+            <FoodCard key={food.info.id} food={food.info} />
+          ))}
+        </div>
+      )}
     </>
   );
 };
